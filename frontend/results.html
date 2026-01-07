@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Search Results</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <a href="/"><img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" alt="Google Logo"></a>
+        </div>
+        <div class="search-bar">
+            <input type="text" id="search-input">
+            <button id="search-button">Search</button>
+        </div>
+    </div>
+    <div class="results-container" id="results-container">
+        <!-- Search results will be dynamically inserted here -->
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const query = urlParams.get('q');
+            const resultsContainer = document.getElementById('results-container');
+
+            if (query) {
+                document.getElementById('search-input').value = query;
+                resultsContainer.innerHTML = '<p>Loading...</p>'; // Loading indicator
+
+                fetch(`/search?q=${encodeURIComponent(query)}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        resultsContainer.innerHTML = ''; // Clear loading indicator
+                        if (data.results && data.results.length > 0) {
+                            data.results.forEach(result => {
+                                const resultElement = document.createElement('div');
+                                resultElement.classList.add('result-item');
+                                resultElement.innerHTML = `
+                                    <h3><a href="${result.url}" target="_blank" rel="noopener noreferrer">${result.title}</a></h3>
+                                    <p>${result.snippet}</p>
+                                    <a href="${result.url}" class="url" target="_blank" rel="noopener noreferrer">${result.url}</a>
+                                `;
+                                resultsContainer.appendChild(resultElement);
+                            });
+                        } else {
+                            resultsContainer.innerHTML = '<p>No results found.</p>';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching search results:', error);
+                        resultsContainer.innerHTML = `<p>An error occurred while fetching results: ${error.message}</p>`;
+                    });
+            }
+
+            document.getElementById('search-button').addEventListener('click', () => {
+                const newQuery = document.getElementById('search-input').value;
+                if (newQuery) {
+                    window.location.href = `results.html?q=${encodeURIComponent(newQuery)}`;
+                }
+            });
+
+            document.getElementById('search-input').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    const newQuery = document.getElementById('search-input').value;
+                    if (newQuery) {
+                        window.location.href = `results.html?q=${encodeURIComponent(newQuery)}`;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

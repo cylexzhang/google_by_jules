@@ -1,0 +1,10 @@
+# Ignore database files
+backend/search_history.db
+
+# Ignore log files
+server.log
+
+# Ignore Python virtual environment
+venv/
+__pycache__/
+*.pyc
