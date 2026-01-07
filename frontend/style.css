@@ -120,3 +120,16 @@ body {
     text-decoration: none;
     font-size: 14px;
 }
+
+.logo-text {
+    font-size: 60px;
+    font-family: "Product Sans", Arial, sans-serif;
+    letter-spacing: -2px;
+    margin-bottom: 20px;
+}
+
+.header .logo .logo-text {
+    font-size: 22px;
+    margin-right: 20px;
+    letter-spacing: -1px;
+}
