@@ -2,7 +2,8 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #fff;
+    background-color: #202124; /* Dark background */
+    color: #e8eaed; /* Light text */
 }
 
 .container {
@@ -29,10 +30,12 @@ body {
 .search-bar input[type="text"] {
     width: 500px;
     padding: 10px;
-    border: 1px solid #dfe1e5;
+    border: 1px solid #5f6368; /* Darker border */
     border-radius: 24px;
     outline: none;
     font-size: 16px;
+    background-color: #303134; /* Dark input background */
+    color: #e8eaed; /* Light text */
 }
 
 .search-bar input[type="text"]:hover,
@@ -46,10 +49,10 @@ body {
 }
 
 .buttons button {
-    background-color: #f8f9fa;
-    border: 1px solid #f8f9fa;
+    background-color: #303134; /* Dark button */
+    border: 1px solid #5f6368; /* Darker border */
     border-radius: 4px;
-    color: #3c4043;
+    color: #e8eaed; /* Light text */
     font-family: arial,sans-serif;
     font-size: 14px;
     margin: 11px 4px;
@@ -64,16 +67,17 @@ body {
 
 .buttons button:hover {
     box-shadow: 0 1px 1px rgba(0,0,0,.1);
-    background-color: #f8f9fa;
-    border: 1px solid #dadce0;
-    color: #202124;
+    background-color: #3c4043;
+    border: 1px solid #5f6368;
+    color: #e8eaed;
 }
 
 .header {
     display: flex;
     align-items: center;
     padding: 20px;
-    border-bottom: 1px solid #dfe1e5;
+    border-bottom: 1px solid #3c4043; /* Darker border */
+    background-color: #202124;
 }
 
 .header .logo img {
@@ -97,7 +101,7 @@ body {
 }
 
 .result-item h3 a {
-    color: #1a0dab;
+    color: #8ab4f8; /* Lighter blue for links */
     text-decoration: none;
     font-size: 20px;
 }
@@ -107,12 +111,12 @@ body {
 }
 
 .result-item p {
-    color: #4d5156;
+    color: #bdc1c6; /* Lighter grey for snippets */
     margin: 5px 0;
 }
 
 .result-item .url {
-    color: #006621;
+    color: #99d2ff; /* Lighter green/blue for URL */
     text-decoration: none;
     font-size: 14px;
 }
