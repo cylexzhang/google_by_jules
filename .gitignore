@@ -8,3 +8,4 @@ server.log
 venv/
 __pycache__/
 *.pyc
+tests/screenshots/
