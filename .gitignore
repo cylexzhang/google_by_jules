@@ -1,11 +1,17 @@
 # Ignore database files
-backend/search_history.db
+*.db
 
 # Ignore log files
-server.log
+*.log
 
 # Ignore Python virtual environment
 venv/
+
+# Ignore pycache directories
 __pycache__/
-*.pyc
+
+# Ignore test screenshots
 tests/screenshots/
+
+# Ignore pytest cache
+.pytest_cache/
